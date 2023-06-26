@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:share_plus/share_plus.dart';
@@ -35,6 +37,18 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+          appBar: AppBar(
+            leading:const  Icon(Icons.web,color: Colors.white,size: 35,),
+            backgroundColor: Colors.black,
+            centerTitle: true,
+            title:const  Text(
+              "MDX BROWSER",
+              style: TextStyle(
+                color: Color.fromARGB(255, 255, 255, 255),
+                fontSize: 25,
+              ),
+            ),
+          ),
           backgroundColor: Colors.black,
           body: ListView(
             children: [
@@ -83,7 +97,7 @@ class _HomeState extends State<Home> {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
-                          height: 695,
+                          height: 655,
                           width: 100,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
@@ -97,87 +111,89 @@ class _HomeState extends State<Home> {
                                       snapshot.data!.items[index].link);
                                 },
                                 child: Card(
-                                    child: Container(
-                                        height: 170,
-                                        color: Colors.white.withOpacity(0.3),
-                                        child: Row(children: [
-                                          Container(
-                                            height: 200,
-                                            width: 100,
-                                            color: Colors.amber,
-                                          ),
-                                          SizedBox(
-                                            height: 210,
-                                            width: 285,
-                                            //     color: Colors.red,
-                                            child: Column(
-                                              children: [
-                                                Text(
+                                  color: Colors.white,
+                                  child: Container(
+                                      height: 170,
+                                      color: Colors.white.withOpacity(0.3),
+                                      child: Row(children: [
+                                        Container(
+                                          height: 200,
+                                          width: 100,
+                                          color: Colors.amber,
+                                        ),
+                                        SizedBox(
+                                          height: 210,
+                                          width: 285,
+                                          //     color: Colors.red,
+                                          child: Column(
+                                            children: [
+                                              Text(
+                                                snapshot.data!.items[index]
+                                                    .displayLink
+                                                    .toString(),
+                                                style: const TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.only(
+                                                        left: 10),
+                                                child: Text(
                                                   snapshot.data!.items[index]
-                                                      .displayLink
+                                                      .title
                                                       .toString(),
                                                   style: const TextStyle(
                                                     color: Colors.black,
                                                     fontSize: 15,
-                                                    fontWeight: FontWeight.bold,
+                                                    fontWeight:
+                                                        FontWeight.bold,
+                                                  ),
+                                                  maxLines: 1,
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.only(
+                                                        left: 10),
+                                                child: Text(
+                                                  snapshot
+                                                      .data!.items[index].link
+                                                      .toString(),
+                                                  style: const TextStyle(
+                                                    color: Color.fromARGB(
+                                                        255, 0, 187, 255),
+                                                    fontSize: 15,
+                                                    fontWeight:
+                                                        FontWeight.bold,
+                                                  ),
+                                                  maxLines: 1,
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.only(
+                                                        left: 10),
+                                                child: Text(
+                                                  snapshot.data!.items[index]
+                                                      .snippet
+                                                      .toString(),
+                                                  style: const TextStyle(
+                                                    color: Color.fromARGB(
+                                                        255, 0, 0, 0),
+                                                    fontSize: 15,
+                                                    fontWeight:
+                                                        FontWeight.bold,
                                                   ),
                                                 ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 10),
-                                                  child: Text(
-                                                    snapshot.data!.items[index]
-                                                        .title
-                                                        .toString(),
-                                                    style: const TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize: 15,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                    maxLines: 1,
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 10),
-                                                  child: Text(
-                                                    snapshot
-                                                        .data!.items[index].link
-                                                        .toString(),
-                                                    style: const TextStyle(
-                                                      color: Color.fromARGB(
-                                                          255, 0, 187, 255),
-                                                      fontSize: 15,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                    maxLines: 1,
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 10),
-                                                  child: Text(
-                                                    snapshot.data!.items[index]
-                                                        .snippet
-                                                        .toString(),
-                                                    style: const TextStyle(
-                                                      color: Color.fromARGB(
-                                                          255, 0, 0, 0),
-                                                      fontSize: 15,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
+                                              )
+                                            ],
                                           ),
-                                        ]))),
+                                        ),
+                                      ])),
+                                ),
                               );
                             },
                             itemCount: snapshot.data!.items.length,
