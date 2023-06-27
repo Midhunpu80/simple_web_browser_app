@@ -1,14 +1,10 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
+
 import 'package:share_plus/share_plus.dart';
 import 'package:websearch/model/searchmodel.dart';
 import 'package:websearch/service/api.dart';
 
 class google extends StatefulWidget {
-
-
   @override
   State<google> createState() => _googleState();
 }
@@ -38,10 +34,14 @@ class _googleState extends State<google> {
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
-            leading:const  Icon(Icons.web,color: Colors.white,size: 35,),
+            leading: const Icon(
+              Icons.web,
+              color: Colors.white,
+              size: 35,
+            ),
             backgroundColor: Colors.black,
             centerTitle: true,
-            title:const  Text(
+            title: const Text(
               "GOOGLE",
               style: TextStyle(
                 color: Color.fromARGB(255, 255, 255, 255),
@@ -86,13 +86,27 @@ class _googleState extends State<google> {
                   future: alldata,
                   builder: (context, AsyncSnapshot<Search> snapshot) {
                     if (!snapshot.hasData) {
-                      return const Text(
-                        "Is empty",
-                        style: TextStyle(color: Colors.white),
+                      return const Padding(
+                        padding: EdgeInsets.only(top: 190),
+                        child: Center(
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 140),
+                            child: Text(
+                              "Serch anything",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
                       );
                     } else if (snapshot.connectionState ==
                         ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
+                      return const Padding(
+                        padding:  EdgeInsets.only(top:200),
+                        child:  Center(child: CircularProgressIndicator()),
+                      );
                     } else {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -138,26 +152,23 @@ class _googleState extends State<google> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding:
-                                                    const EdgeInsets.only(
-                                                        left: 10),
+                                                padding: const EdgeInsets.only(
+                                                    left: 10),
                                                 child: Text(
-                                                  snapshot.data!.items[index]
-                                                      .title
+                                                  snapshot
+                                                      .data!.items[index].title
                                                       .toString(),
                                                   style: const TextStyle(
                                                     color: Colors.black,
                                                     fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.bold,
+                                                    fontWeight: FontWeight.bold,
                                                   ),
                                                   maxLines: 1,
                                                 ),
                                               ),
                                               Padding(
-                                                padding:
-                                                    const EdgeInsets.only(
-                                                        left: 10),
+                                                padding: const EdgeInsets.only(
+                                                    left: 10),
                                                 child: Text(
                                                   snapshot
                                                       .data!.items[index].link
@@ -166,16 +177,14 @@ class _googleState extends State<google> {
                                                     color: Color.fromARGB(
                                                         255, 0, 187, 255),
                                                     fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.bold,
+                                                    fontWeight: FontWeight.bold,
                                                   ),
                                                   maxLines: 1,
                                                 ),
                                               ),
                                               Padding(
-                                                padding:
-                                                    const EdgeInsets.only(
-                                                        left: 10),
+                                                padding: const EdgeInsets.only(
+                                                    left: 10),
                                                 child: Text(
                                                   snapshot.data!.items[index]
                                                       .snippet
@@ -184,8 +193,7 @@ class _googleState extends State<google> {
                                                     color: Color.fromARGB(
                                                         255, 0, 0, 0),
                                                     fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.bold,
+                                                    fontWeight: FontWeight.bold,
                                                   ),
                                                 ),
                                               )

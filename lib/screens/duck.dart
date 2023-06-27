@@ -1,16 +1,13 @@
-
+// ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
+
 import 'package:share_plus/share_plus.dart';
 import 'package:websearch/model/duckmodel.dart';
-import 'package:websearch/model/searchmodel.dart';
-import 'package:websearch/service/api.dart';
+
 import 'package:websearch/service/duckapi.dart';
 
 class duck extends StatefulWidget {
-
-
   @override
   State<duck> createState() => _duckState();
 }
@@ -40,10 +37,14 @@ class _duckState extends State<duck> {
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
-            leading:const  Icon(Icons.web,color: Colors.white,size: 35,),
+            leading: const Icon(
+              Icons.web,
+              color: Colors.white,
+              size: 35,
+            ),
             backgroundColor: Colors.black,
             centerTitle: true,
-            title:const  Text(
+            title: const Text(
               "duck duck Go ",
               style: TextStyle(
                 color: Color.fromARGB(255, 255, 255, 255),
@@ -86,20 +87,29 @@ class _duckState extends State<duck> {
               ),
               FutureBuilder<Duc>(
                   future: alldata,
-                  builder: (context,AsyncSnapshot<Duc> snapshot) {
+                  builder: (context, AsyncSnapshot<Duc> snapshot) {
                     if (!snapshot.hasData) {
-                      return const  Padding(
-                        padding:  EdgeInsets.only(top: 190),
+                      return const Padding(
+                        padding: EdgeInsets.only(top: 190),
                         child: Center(
-                          child: Text(
-                            "Is empty",
-                            style: TextStyle(color: Colors.white),
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 140),
+                            child: Text(
+                              "Serch anything",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ),
                       );
                     } else if (snapshot.connectionState ==
                         ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
+                      return const Padding(
+                        padding:  EdgeInsets.only(top:200),
+                        child:  Center(child: CircularProgressIndicator()),
+                      );
                     } else {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -114,8 +124,9 @@ class _duckState extends State<duck> {
                             itemBuilder: (context, index) {
                               return InkWell(
                                 onTap: () async {
-                                  await Share.share(
-                                      snapshot.data!.results[index].url.toString());
+                                  await Share.share(snapshot
+                                      .data!.results[index].url
+                                      .toString());
                                 },
                                 child: Card(
                                   color: Colors.white,
@@ -126,7 +137,8 @@ class _duckState extends State<duck> {
                                         Container(
                                           height: 200,
                                           width: 100,
-                                          color:const  Color.fromARGB(255, 64, 255, 0),
+                                          color: const Color.fromARGB(
+                                              255, 64, 255, 0),
                                         ),
                                         SizedBox(
                                           height: 210,
@@ -135,17 +147,18 @@ class _duckState extends State<duck> {
                                           child: Column(
                                             children: [
                                               Text(
-                                                snapshot.data!.results[index].url,
+                                                snapshot
+                                                    .data!.results[index].url,
                                                 style: const TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.bold,
                                                 ),
+                                                maxLines: 1,
                                               ),
                                               Padding(
-                                                padding:
-                                                    const EdgeInsets.only(
-                                                        left: 10),
+                                                padding: const EdgeInsets.only(
+                                                    left: 10),
                                                 child: Text(
                                                   snapshot.data!.results[index]
                                                       .title
@@ -153,16 +166,14 @@ class _duckState extends State<duck> {
                                                   style: const TextStyle(
                                                     color: Colors.black,
                                                     fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.bold,
+                                                    fontWeight: FontWeight.bold,
                                                   ),
                                                   maxLines: 1,
                                                 ),
                                               ),
                                               Padding(
-                                                padding:
-                                                    const EdgeInsets.only(
-                                                        left: 10),
+                                                padding: const EdgeInsets.only(
+                                                    left: 10),
                                                 child: Text(
                                                   snapshot
                                                       .data!.results[index].url
@@ -171,19 +182,19 @@ class _duckState extends State<duck> {
                                                     color: Color.fromARGB(
                                                         255, 0, 187, 255),
                                                     fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.bold,
+                                                    fontWeight: FontWeight.bold,
                                                   ),
                                                   maxLines: 1,
                                                 ),
                                               ),
                                               Padding(
-                                                padding:
-                                                    const EdgeInsets.only(
-                                                        left: 10),
+                                                padding: const EdgeInsets.only(
+                                                    left: 10),
                                                 child: Expanded(
                                                   child: Text(
-                                                    snapshot.data!.results[index]
+                                                    snapshot
+                                                        .data!
+                                                        .results[index]
                                                         .description
                                                         .toString(),
                                                     style: const TextStyle(
@@ -192,7 +203,8 @@ class _duckState extends State<duck> {
                                                       fontSize: 15,
                                                       fontWeight:
                                                           FontWeight.bold,
-                                                    ),maxLines: 3,
+                                                    ),
+                                                    maxLines: 3,
                                                   ),
                                                 ),
                                               )

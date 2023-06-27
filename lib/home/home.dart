@@ -10,15 +10,29 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(40, 0, 140, 255),
       appBar: AppBar(
+        actions: const [
+          CircleAvatar(
+            radius: 25,
+            backgroundImage: NetworkImage(
+                "https://cdna.artstation.com/p/assets/images/images/016/471/998/large/vinicio-shurman-fiverrdeseho.jpg?1552310234"),
+            backgroundColor: Colors.amber,
+          )
+        ],
+        leading: Icon(
+          Icons.web,
+          color: Colors.white,
+          size: 38,
+        ),
         toolbarHeight: 100,
         centerTitle: true,
         title: Text(
           "Search engines",
           style: TextStyle(
-              color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+              color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: const Color.fromARGB(255, 105, 104, 104),
+        backgroundColor: Color.fromARGB(255, 0, 0, 0),
       ),
       body: SizedBox(
         height: 1000,
@@ -35,6 +49,7 @@ class Home extends StatelessWidget {
               },
               child: Container(
                 decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
                   boxShadow: [
                     BoxShadow(
                         color: Colors.grey,
@@ -45,8 +60,11 @@ class Home extends StatelessWidget {
                 ),
                 height: 200,
                 width: 200,
-                child: Image.network(
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMSVccPlEiUjzwT82xBUPGiS1zGQZ-lBNbRw&usqp=CAU"),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(25),
+                  child: Image.network(
+                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMSVccPlEiUjzwT82xBUPGiS1zGQZ-lBNbRw&usqp=CAU"),
+                ),
               ),
             ),
             const SizedBox(
@@ -62,8 +80,7 @@ class Home extends StatelessWidget {
                 width: 200,
                 // ignore: prefer_const_literals_to_create_immutables
                 decoration: BoxDecoration(
-                    border:
-                        Border.all(color: const Color.fromARGB(255, 0, 0, 0)),
+                    borderRadius: BorderRadius.circular(30),
                     boxShadow: [
                       BoxShadow(
                           color: Colors.grey,
@@ -71,8 +88,11 @@ class Home extends StatelessWidget {
                           offset: Offset.fromDirection(3, 5),
                           spreadRadius: 6)
                     ]),
-                child: Image.network(
-                    "https://play-lh.googleusercontent.com/RZ5luCUwc5QtJP9xDn-ZCwEutT160GVyoh5K1eu4YJ5fD7v4LP5ptVdgR9mz4Hnr7A=w240-h480-rw"),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(25),
+                  child: Image.network(
+                      "https://play-lh.googleusercontent.com/RZ5luCUwc5QtJP9xDn-ZCwEutT160GVyoh5K1eu4YJ5fD7v4LP5ptVdgR9mz4Hnr7A=w240-h480-rw"),
+                ),
               ),
             )
           ],
